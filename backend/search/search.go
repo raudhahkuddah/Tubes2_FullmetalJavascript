@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"backend/models"
-	scraper "backend/scrapper"
+	scraper "github.com/raudhahkuddah/Tubes2_FullmetalJavascript/backend/scraper"
 )
 
 type SearchResult = models.SearchResult

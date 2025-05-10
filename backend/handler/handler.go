@@ -5,13 +5,13 @@ import (
 	"net/http"
 	"time"
 
-	"backend/models"
-	"backend/search"
+	"github.com/raudhahkuddah/Tubes2_FullmetalJavascript/backend/models"
+	"github.com/raudhahkuddah/Tubes2_FullmetalJavascript/backend/search"
 )
 
 func SearchHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		http.Error(w, "POST", http.StatusMethodNotAllowed)
+		http.Error(w, "POST only", http.StatusMethodNotAllowed)
 		return
 	}
 

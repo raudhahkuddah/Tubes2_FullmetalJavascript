@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"backend/handler"
+	"github.com/raudhahkuddah/Tubes2_FullmetalJavascript/backend/handler"
 )
 
 func main() {
