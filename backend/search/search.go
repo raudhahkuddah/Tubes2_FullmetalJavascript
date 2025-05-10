@@ -5,8 +5,8 @@ import (
 	"sync"
 	"time"
 
-	"backend/models"
-	scraper "github.com/raudhahkuddah/Tubes2_FullmetalJavascript/backend/scraper"
+	"github.com/raudhahkuddah/Tubes2_FullmetalJavascript/backend/models"
+	scraper "github.com/raudhahkuddah/Tubes2_FullmetalJavascript/backend/scrapper"
 )
 
 type SearchResult = models.SearchResult
