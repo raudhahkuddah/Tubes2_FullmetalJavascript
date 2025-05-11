@@ -7,16 +7,12 @@ type SearchNode struct {
 }
 
 type SearchRequest struct {
-	Element    string `json:"element"`
-	Algorithm  string `json:"algorithm"`
+	Element    string `json:"element"`     
+	Algorithm  string `json:"algorithm"`   
 	NumResults int    `json:"num_results"`
 }
 
 type SearchResult struct {
-	Steps []Step `json:"steps"`
+	RecipePath []string `json:"recipe_path"`
 }
 
-type Step struct {
-	Result      string   `json:"result"`
-	Ingredients []string `json:"ingredients"`
-}

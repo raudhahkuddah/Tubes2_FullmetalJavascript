@@ -11,7 +11,6 @@ import (
 
 type SearchResult = models.SearchResult
 type SearchNode = models.SearchNode
-type Step = models.Step
 
 func BFS(target string, numResults int) ([]*SearchResult, int, time.Duration, error) {
 	start := time.Now()
@@ -42,8 +41,7 @@ func BFS(target string, numResults int) ([]*SearchResult, int, time.Duration, er
 
 		if len(elementData.Recipes) == 0 {
 			mu.Lock()
-			steps := ConvertPathToSteps(current.Path)
-			results = append(results, &SearchResult{Steps: steps})
+			results = append(results, &SearchResult{RecipePath: current.Path})
 			mu.Unlock()
 			continue
 		}
@@ -98,8 +96,7 @@ func DFS(target string, numResults int) ([]*SearchResult, int, time.Duration, er
 		}
 
 		if len(elementData.Recipes) == 0 {
-			steps := ConvertPathToSteps(current.Path)
-			results = append(results, &SearchResult{Steps: steps})
+			results = append(results, &SearchResult{RecipePath: current.Path})
 			continue
 		}
 
@@ -115,19 +112,4 @@ func DFS(target string, numResults int) ([]*SearchResult, int, time.Duration, er
 	}
 
 	return results, nodeCount, time.Since(start), nil
-}
-
-func ConvertPathToSteps(path []string) []Step {
-	var steps []Step
-	if len(path) < 3 {
-		return steps
-	}
-	for i := 2; i < len(path); i += 2 {
-		step := Step{
-			Result:      path[i],
-			Ingredients: []string{path[i-2], path[i-1]},
-		}
-		steps = append(steps, step)
-	}
-	return steps
 }
