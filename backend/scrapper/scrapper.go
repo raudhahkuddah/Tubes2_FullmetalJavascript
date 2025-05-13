@@ -56,7 +56,7 @@ func ScrapeElement(elementName string) (*ElementData, error) {
 	// Telusuri setiap elemen HTML dalam bagian konten utama artikel
 	doc.Find("div.mw-content-ltr.mw-parser-output").Children().EachWithBreak(func(i int, s *goquery.Selection) bool {
 		// Jika menemukan heading h2 dengan span ber-ID "Recipes", tandai bagian mulai scraping
-		if s.Is("h2") && s.Find("span.mw-headline#Recipes").Length() > 0 {
+		if s.Is("h3") && s.Find("span.mw-headline#Little_Alchemy_2").Length() > 0 {
 			found = true
 			return true // Lanjutkan ke elemen berikutnya
 		}
