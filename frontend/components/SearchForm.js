@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function SearchForm({ onSearch, isLoading }) {
   const [element, setElement] = useState('');
@@ -17,17 +17,21 @@ export default function SearchForm({ onSearch, isLoading }) {
     onSearch({
       element,
       algorithm,
-      multipleRecipes,
-      maxRecipes: multipleRecipes ? maxRecipes : 1
+      maxRecipes
     });
   };
 
+  useEffect(() => {
+    if (!multipleRecipes) setMaxRecipes(1);
+    else setMaxRecipes(2);
+  }, [multipleRecipes]);
+
   return (
     <form onSubmit={handleSubmit} className="search-form">
-      <h2>Little Alchemy 2 Recipe Finder</h2>
+      <h2 style={{ color: '#355070' }}>Little Alchemy 2 Recipe Finder</h2>
       
       <div className="form-group">
-        <label htmlFor="element">Element to search:</label>
+        <label htmlFor="element"style={{ color: '#6d597a' }}>Element to search:</label>
         <input
           id="element"
           type="text"
@@ -35,23 +39,38 @@ export default function SearchForm({ onSearch, isLoading }) {
           onChange={(e) => setElement(e.target.value)}
           placeholder="Enter element name (e.g., 'glass', 'human')"
           required
+           style={{
+            backgroundColor: '#fdf0ed',
+            border: '1px solid #b56576',
+            borderRadius: '4px',
+            padding: '0.5rem',
+            color: '#355070',
+            width: '100%',
+          }}
         />
       </div>
       
       <div className="form-group">
-        <label htmlFor="algorithm">Search Algorithm:</label>
+        <label htmlFor="algorithm"style={{ color: '#6d597a' }}>Search Algorithm:</label>
         <select
           id="algorithm"
           value={algorithm}
           onChange={(e) => setAlgorithm(e.target.value)}
+          style={{
+            backgroundColor: '#fdf0ed',
+            border: '1px solid #b56576',
+            borderRadius: '4px',
+            padding: '0.5rem',
+            color: '#355070',
+            width: '100%',
+          }}
         >
           <option value="BFS">BFS (Breadth-First Search)</option>
           <option value="DFS">DFS (Depth-First Search)</option>
-          <option value="Bidirectional">Bidirectional Search</option>
         </select>
       </div>
       
-      <div className="form-group checkbox-group">
+      <div className="form-group checkbox-group"style={{ color: '#6d597a' }}>
         <input
           id="multipleRecipes"
           type="checkbox"
@@ -63,7 +82,7 @@ export default function SearchForm({ onSearch, isLoading }) {
       
       {multipleRecipes && (
         <div className="form-group">
-          <label htmlFor="maxRecipes">Maximum recipes to find:</label>
+          <label htmlFor="maxRecipes"style={{ color: '#6d597a' }}>Maximum recipes to find:</label>
           <input
             id="maxRecipes"
             type="number"
@@ -71,11 +90,19 @@ export default function SearchForm({ onSearch, isLoading }) {
             max="50"
             value={maxRecipes}
             onChange={(e) => setMaxRecipes(parseInt(e.target.value))}
+            style={{
+              backgroundColor: '#fdf0ed',
+              border: '1px solid #b56576',
+              borderRadius: '4px',
+              padding: '0.5rem',
+              color: '#355070',
+              width: '100%',
+            }}
           />
         </div>
       )}
       
-      <button type="submit" className="submit-btn" disabled={isLoading}>
+      <button type="submit" className="submit-btn" disabled={isLoading}style={{backgroundColor: '#b56576', color: 'white', padding: '0.5rem 1rem', border: 'none', borderRadius: '4px',marginTop: '1rem', cursor: 'pointer', opacity: isLoading ? 0.6 : 1,}}>
         {isLoading ? 'Searching...' : 'Search Recipes'}
       </button>
     </form>
