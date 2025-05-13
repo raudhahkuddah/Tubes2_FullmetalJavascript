@@ -1,6 +1,4 @@
 # FullmetalJavascript
-## Tampilan Form Pencarian
-
 ![Form Pencarian](./doc/search-form.png)
 Aplikasi pencarian *recipe* elemen dalam permainan **Little Alchemy 2** menggunakan algoritma **BFS** dan **DFS**. Backend dibangun dengan **Golang** dan Frontend menggunakan **Next.js/React**  melalui scraping dari situs Little Alchemy 2.
 
