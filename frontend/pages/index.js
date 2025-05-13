@@ -6,6 +6,8 @@ import RecipeTree from '../components/RecipeTree';
 import { convertRecipeTreeToBinary } from '../components/RecipeTree';
 import { useEdges } from 'reactflow';
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
+
 const dummy = {
   name: "Steam",
   children: [
