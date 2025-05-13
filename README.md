@@ -34,7 +34,7 @@ Mode multiple recipes mengaktifkan fitur **multithreading** pada backend untuk m
 
 ### 🔧 Clone Repositori
 ```bash
-git clone https://github.com/raudhahkuddah/Tubes2_FullmetalJavascript
+git clone https://github.com/raudhahkuddah/Tubes2_FullmetalJavascript.git
 cd Tubes2_FullmetalJavascript
 ```
 
