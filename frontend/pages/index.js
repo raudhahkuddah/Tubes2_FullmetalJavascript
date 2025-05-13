@@ -3,6 +3,8 @@ import Head from 'next/head';
 import SearchForm from '../components/SearchForm';
 import RecipeVisualizer from '../components/RecipeVisualizer';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
+
 export default function Home() {
   const [searchResults, setSearchResults] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +15,7 @@ export default function Home() {
     setError(null);
     
     try {
-      const response = await fetch('http://localhost:8080/api/search', {
+      const response = await fetch(`${API_URL}/api/search`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
